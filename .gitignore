@@ -1,0 +1,6 @@
+review
+vendor
+*.idea
+*.iml
+.phpunit.cache
+.phpunit.result.cache

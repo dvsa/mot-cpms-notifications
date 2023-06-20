@@ -1,0 +1,27 @@
+{
+    "name": "dvsa/mot-cpms-notifications",
+    "type": "library",
+    "license": "proprietary",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "dvsa/mot-cpms-queues": "^1.0.1",
+        "ramsey/uuid": "^4.2.1"
+    },
+    "require-dev": {
+        "captainhook/captainhook": "^5.16",
+        "captainhook/plugin-composer": "^5.3",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "DVSA\\CPMS\\Notifications\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "captainhook/plugin-composer": true
+        }
+    }
+}
