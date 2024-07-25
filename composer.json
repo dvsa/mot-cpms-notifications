@@ -3,8 +3,8 @@
     "type": "library",
     "license": "proprietary",
     "require": {
-        "php": "^7.4 || ^8.0",
-        "dvsa/mot-cpms-queues": "^1.0.1",
+        "php": "^8.2",
+        "dvsa/mot-cpms-queues": "^3.0.0",
         "ramsey/uuid": "^4.2.1"
     },
     "require-dev": {
@@ -19,6 +19,9 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "scripts" : {
+        "test": "vendor/bin/phpunit"
+    },
     "config": {
         "allow-plugins": {
             "captainhook/plugin-composer": true
