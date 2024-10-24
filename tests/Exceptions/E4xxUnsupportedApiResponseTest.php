@@ -6,14 +6,14 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 /**
- * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreatePaymentNotificationV1
+ * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xxUnsupportedApiResponse
  */
-class E4xx_CannotCreatePaymentNotificationV1Test extends TestCase
+class E4xxUnsupportedApiResponseTest extends TestCase
 {
     /**
      * @covers ::__construct
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -23,18 +23,18 @@ class E4xx_CannotCreatePaymentNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_CannotCreatePaymentNotificationV1($message);
+        $obj = new E4xxUnsupportedApiResponse($message);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_CannotCreatePaymentNotificationV1::class, $obj);
+        $this->assertInstanceOf(E4xxUnsupportedApiResponse::class, $obj);
     }
 
     /**
      * @covers ::__construct
      */
-    public function testIsRuntimeException()
+    public function testIsRuntimeException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -44,7 +44,7 @@ class E4xx_CannotCreatePaymentNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_CannotCreatePaymentNotificationV1($message);
+        $obj = new E4xxUnsupportedApiResponse($message);
 
         // ----------------------------------------------------------------
         // test the results
@@ -55,13 +55,13 @@ class E4xx_CannotCreatePaymentNotificationV1Test extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorCode400()
+    public function testHasErrorCode400(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_CannotCreatePaymentNotificationV1($message);
+        $obj = new E4xxUnsupportedApiResponse($message);
 
         $expectedCode = 400;
 
@@ -79,13 +79,13 @@ class E4xx_CannotCreatePaymentNotificationV1Test extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorMessage()
+    public function testHasErrorMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_CannotCreatePaymentNotificationV1($message);
+        $obj = new E4xxUnsupportedApiResponse($message);
 
         $expectedMessage = $message;
 
@@ -103,47 +103,46 @@ class E4xx_CannotCreatePaymentNotificationV1Test extends TestCase
     /**
      * @covers ::newFromException
      */
-    public function testCanGenerateFromAnotherException()
+    public function testCanGenerateFromAnotherException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $cause = new \Exception;
+        $cause = new \Exception();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_CannotCreatePaymentNotificationV1::newFromException($cause);
+        $obj = E4xxUnsupportedApiResponse::newFromException($cause);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_CannotCreatePaymentNotificationV1::class, $obj);
+        $this->assertInstanceOf(E4xxUnsupportedApiResponse::class, $obj);
         $this->assertSame($cause, $obj->getPrevious());
     }
 
     /**
-     * @covers ::newFromBadData
+     * @covers ::newFromBadResponse
      */
-    public function testCanGenerateFromBadData()
+    public function testCanGenerateFromBadResponse(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "bad response";
         $badData = [ 'hello, world' ];
-        $expectedMessage = "{$message}; data is: " . json_encode($badData);
+        $expectedMessage = "{$message}; data payload is: " . json_encode($badData);
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_CannotCreatePaymentNotificationV1::newFromBadData($message, $badData);
+        $obj = E4xxUnsupportedApiResponse::newFromBadResponse($message, $badData);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_CannotCreatePaymentNotificationV1::class, $obj);
+        $this->assertInstanceOf(E4xxUnsupportedApiResponse::class, $obj);
         $this->assertEquals($expectedMessage, $obj->getMessage());
     }
-
 }

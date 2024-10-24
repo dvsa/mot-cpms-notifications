@@ -9,11 +9,10 @@ use PHPUnit\Framework\TestCase;
  */
 class PaymentNotificationV1EventTypesTest extends TestCase
 {
-
     /**
      * @covers ::getAllEventTypes
      */
-    public function testCanGetListOfValidEventTypes()
+    public function testCanGetListOfValidEventTypes(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -33,5 +32,4 @@ class PaymentNotificationV1EventTypesTest extends TestCase
 
         $this->assertEquals($expectedResult, $actualResult);
     }
-
 }

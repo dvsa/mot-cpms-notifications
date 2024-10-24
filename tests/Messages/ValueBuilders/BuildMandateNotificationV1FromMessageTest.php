@@ -2,9 +2,10 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreateMandateNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\MandateNotificationV1;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 /**
  * @coversDefaultClass DVSA\CPMS\Notifications\Messages\ValueBuilders\BuildMandateNotificationV1FromPayload
@@ -14,7 +15,7 @@ class BuildMandateNotificationV1FromMessageTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -22,7 +23,7 @@ class BuildMandateNotificationV1FromMessageTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new BuildMandateNotificationV1FromPayload;
+        $obj = new BuildMandateNotificationV1FromPayload();
 
         // ----------------------------------------------------------------
         // test the results
@@ -34,7 +35,7 @@ class BuildMandateNotificationV1FromMessageTest extends TestCase
      * @covers ::__invoke
      * @covers ::from
      */
-    public function testCanBuildEntity()
+    public function testCanBuildEntity(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -63,7 +64,7 @@ class BuildMandateNotificationV1FromMessageTest extends TestCase
             "TEST-12345-67890",
             314
         );
-        $obj = new BuildMandateNotificationV1FromPayload;
+        $obj = new BuildMandateNotificationV1FromPayload();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -81,19 +82,20 @@ class BuildMandateNotificationV1FromMessageTest extends TestCase
      * @covers ::from
      * @dataProvider provideNonObjectPayloadsToTest
      */
-    public function testThrowsExceptionIfPayloadIsNotAnObject($payload)
+    public function testThrowsExceptionIfPayloadIsNotAnObject(mixed $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreateMandateNotificationV1::class);
+        $this->expectException(E4xxCannotCreateMandateNotificationV1::class);
 
-        $obj = new BuildMandateNotificationV1FromPayload;
+        $obj = new BuildMandateNotificationV1FromPayload();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = $obj($payload);
+        // @phpstan-ignore argument.type
+        $obj($payload);
 
         // ----------------------------------------------------------------
         // test the results
@@ -104,25 +106,25 @@ class BuildMandateNotificationV1FromMessageTest extends TestCase
      * @covers ::from
      * @dataProvider providePartialMandateDataToTest
      */
-    public function testThrowsExceptionIfRequiredFieldMissing($payload)
+    public function testThrowsExceptionIfRequiredFieldMissing(stdClass $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreateMandateNotificationV1::class);
+        $this->expectException(E4xxCannotCreateMandateNotificationV1::class);
 
-        $obj = new BuildMandateNotificationV1FromPayload;
+        $obj = new BuildMandateNotificationV1FromPayload();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = $obj($payload);
+        $obj($payload);
 
         // ----------------------------------------------------------------
         // test the results
     }
 
-    public function provideNonObjectPayloadsToTest()
+    public function provideNonObjectPayloadsToTest(): array
     {
         return [
             [ null ],
@@ -138,7 +140,7 @@ class BuildMandateNotificationV1FromMessageTest extends TestCase
         ];
     }
 
-    public function providePartialMandateDataToTest()
+    public function providePartialMandateDataToTest(): array
     {
         $complete_payload = (object)[
             'origin' => 'unit-tests',

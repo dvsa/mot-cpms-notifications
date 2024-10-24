@@ -6,14 +6,14 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 /**
- * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E5xx_CannotGenerateNotificationId
+ * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xxNoFactoryForApiResponse
  */
-class E5xx_CannotGenerateNotificationIdTest extends TestCase
+class E4xxNoFactoryForApiResponseTest extends TestCase
 {
     /**
      * @covers ::__construct
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -23,18 +23,18 @@ class E5xx_CannotGenerateNotificationIdTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E5xx_CannotGenerateNotificationId($message);
+        $obj = new E4xxNoFactoryForApiResponse($message);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E5xx_CannotGenerateNotificationId::class, $obj);
+        $this->assertInstanceOf(E4xxNoFactoryForApiResponse::class, $obj);
     }
 
     /**
      * @covers ::__construct
      */
-    public function testIsRuntimeException()
+    public function testIsRuntimeException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -44,7 +44,7 @@ class E5xx_CannotGenerateNotificationIdTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E5xx_CannotGenerateNotificationId($message);
+        $obj = new E4xxNoFactoryForApiResponse($message);
 
         // ----------------------------------------------------------------
         // test the results
@@ -55,15 +55,15 @@ class E5xx_CannotGenerateNotificationIdTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorCode500()
+    public function testHasErrorCode400(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E5xx_CannotGenerateNotificationId($message);
+        $obj = new E4xxNoFactoryForApiResponse($message);
 
-        $expectedCode = 500;
+        $expectedCode = 400;
 
         // ----------------------------------------------------------------
         // perform the change
@@ -79,13 +79,13 @@ class E5xx_CannotGenerateNotificationIdTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorMessage()
+    public function testHasErrorMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E5xx_CannotGenerateNotificationId($message);
+        $obj = new E4xxNoFactoryForApiResponse($message);
 
         $expectedMessage = $message;
 
@@ -103,23 +103,22 @@ class E5xx_CannotGenerateNotificationIdTest extends TestCase
     /**
      * @covers ::newFromException
      */
-    public function testCanGenerateFromAnotherException()
+    public function testCanGenerateFromAnotherException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $cause = new \Exception;
+        $cause = new \Exception();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E5xx_CannotGenerateNotificationId::newFromException($cause);
+        $obj = E4xxNoFactoryForApiResponse::newFromException($cause);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E5xx_CannotGenerateNotificationId::class, $obj);
+        $this->assertInstanceOf(E4xxNoFactoryForApiResponse::class, $obj);
         $this->assertSame($cause, $obj->getPrevious());
     }
-
 }

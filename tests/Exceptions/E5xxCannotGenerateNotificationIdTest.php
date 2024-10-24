@@ -6,14 +6,14 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 /**
- * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xx_UnsupportedApiResponse
+ * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E5xxCannotGenerateNotificationId
  */
-class E4xx_UnsupportedApiResponseTest extends TestCase
+class E5xxCannotGenerateNotificationIdTest extends TestCase
 {
     /**
      * @covers ::__construct
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -23,18 +23,18 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_UnsupportedApiResponse($message);
+        $obj = new E5xxCannotGenerateNotificationId($message);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_UnsupportedApiResponse::class, $obj);
+        $this->assertInstanceOf(E5xxCannotGenerateNotificationId::class, $obj);
     }
 
     /**
      * @covers ::__construct
      */
-    public function testIsRuntimeException()
+    public function testIsRuntimeException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -44,7 +44,7 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_UnsupportedApiResponse($message);
+        $obj = new E5xxCannotGenerateNotificationId($message);
 
         // ----------------------------------------------------------------
         // test the results
@@ -55,15 +55,15 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorCode400()
+    public function testHasErrorCode500(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_UnsupportedApiResponse($message);
+        $obj = new E5xxCannotGenerateNotificationId($message);
 
-        $expectedCode = 400;
+        $expectedCode = 500;
 
         // ----------------------------------------------------------------
         // perform the change
@@ -79,13 +79,13 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorMessage()
+    public function testHasErrorMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_UnsupportedApiResponse($message);
+        $obj = new E5xxCannotGenerateNotificationId($message);
 
         $expectedMessage = $message;
 
@@ -103,47 +103,22 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
     /**
      * @covers ::newFromException
      */
-    public function testCanGenerateFromAnotherException()
+    public function testCanGenerateFromAnotherException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $cause = new \Exception;
+        $cause = new \Exception();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_UnsupportedApiResponse::newFromException($cause);
+        $obj = E5xxCannotGenerateNotificationId::newFromException($cause);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_UnsupportedApiResponse::class, $obj);
+        $this->assertInstanceOf(E5xxCannotGenerateNotificationId::class, $obj);
         $this->assertSame($cause, $obj->getPrevious());
     }
-
-    /**
-     * @covers ::newFromBadResponse
-     */
-    public function testCanGenerateFromBadResponse()
-    {
-        // ----------------------------------------------------------------
-        // setup your test
-
-        $message = "bad response";
-        $badData = [ 'hello, world' ];
-        $expectedMessage = "{$message}; data payload is: " . json_encode($badData);
-
-        // ----------------------------------------------------------------
-        // perform the change
-
-        $obj = E4xx_UnsupportedApiResponse::newFromBadResponse($message, $badData);
-
-        // ----------------------------------------------------------------
-        // test the results
-
-        $this->assertInstanceOf(E4xx_UnsupportedApiResponse::class, $obj);
-        $this->assertEquals($expectedMessage, $obj->getMessage());
-    }
-
 }

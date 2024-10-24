@@ -3,7 +3,7 @@
 namespace DVSA\CPMS\Notifications\Messages\Values;
 
 use DateTime;
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreatePaymentNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreatePaymentNotificationV1;
 
 class PaymentNotificationV1
 {
@@ -48,6 +48,7 @@ class PaymentNotificationV1
 
     /**
      * what event caused this notification
+     * @var string
      */
     private $eventCause;
 
@@ -75,7 +76,7 @@ class PaymentNotificationV1
      *
      * if so, this property will contain the parent reference
      *
-     * @var string
+     * @var string|null
      */
     private $parentReference;
 
@@ -85,7 +86,7 @@ class PaymentNotificationV1
      *
      * this can be used to detect out-of-order delivery of notifications
      *
-     * @var int
+     * @var int|null
      */
     private $entityVersion;
 
@@ -124,8 +125,7 @@ class PaymentNotificationV1
         $this->ensureDateTime($acknowledgeBy, 'acknowledgeBy');
         if ($acknowledgeBy instanceof DateTime) {
             $this->acknowledgeBy = clone $acknowledgeBy;
-        }
-        else {
+        } else {
             $this->acknowledgeBy = new DateTime($acknowledgeBy);
         }
 
@@ -137,8 +137,7 @@ class PaymentNotificationV1
         $this->ensureDateTime($eventDate, 'eventDate');
         if ($eventDate instanceof DateTime) {
             $this->eventDate = $eventDate;
-        }
-        else {
+        } else {
             $this->eventDate = new DateTime($eventDate);
         }
 
@@ -159,10 +158,10 @@ class PaymentNotificationV1
      *         the name of $data, to output in an exception message
      * @return void
      *
-     * @throws E4xx_CannotCreateMandateNotificationV1
+     * @throws E4xxCannotCreatePaymentNotificationV1
      *         if $data cannot be used as a DateTime field
      */
-    private function ensureDateTime($data, $paramName)
+    private function ensureDateTime($data, $paramName): void
     {
         // our most favourable case
         if ($data instanceof DateTime) {
@@ -172,17 +171,16 @@ class PaymentNotificationV1
         // if it isn't a string, then we know we cannot use it as a DateTime
         if (!is_string($data)) {
             $msg = "illegal value for \${$paramName} parameter: " . var_export($data, true);
-            throw new E4xx_CannotCreatePaymentNotificationV1($msg);
+            throw new E4xxCannotCreatePaymentNotificationV1($msg);
         }
 
         // at this point, we have a string, but that does not mean it is a
         // valid DateTime value
         try {
             $temp = new DateTime($data);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $msg = "illegal value for \${$paramName} parameter: " . var_export($data, true);
-            throw E4xx_CannotCreatePaymentNotificationV1::newFromException($e, $msg);
+            throw E4xxCannotCreatePaymentNotificationV1::newFromException($e, $msg);
         }
     }
 
@@ -311,7 +309,7 @@ class PaymentNotificationV1
      * what was the value of the Payment's 'version' field when this
      * notification was raised?
      *
-     * @return int
+     * @return int|null
      */
     public function getEntityVersion()
     {

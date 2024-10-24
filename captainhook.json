@@ -21,6 +21,12 @@
             {
                 "action": "./vendor/bin/phpunit",
                 "options": []
+            },
+            {
+                "action": "composer phpcs"
+            },
+            {
+                "action": "composer phpstan"
             }
         ]
     }

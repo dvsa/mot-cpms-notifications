@@ -13,7 +13,7 @@ class BuildMessageFromMandateNotificationV1Test extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -33,7 +33,7 @@ class BuildMessageFromMandateNotificationV1Test extends TestCase
      * @covers ::__invoke
      * @covers ::from
      */
-    public function testCanBuildMultipartMessage()
+    public function testCanBuildMultipartMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test

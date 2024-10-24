@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * this is normally caused by receiving bad data
  */
-class E4xx_UnsupportedApiResponse extends RuntimeException
+final class E4xxUnsupportedApiResponse extends RuntimeException
 {
     /**
      * constructor
@@ -31,11 +31,11 @@ class E4xx_UnsupportedApiResponse extends RuntimeException
      *
      * @param  Exception $cause
      *         the exception that caused this error
-     * @return E4xx_UnsupportedApiResponse
+     * @return E4xxUnsupportedApiResponse
      */
     public static function newFromException(Exception $cause)
     {
-        return new static($cause->getMessage(), $cause);
+        return new self($cause->getMessage(), $cause);
     }
 
     /**
@@ -45,10 +45,10 @@ class E4xx_UnsupportedApiResponse extends RuntimeException
      *         details about why the response is bad
      * @param  mixed $badResponse
      *         the payload that we cannot use
-     * @return E4xx_UnsupportedApiResponse
+     * @return E4xxUnsupportedApiResponse
      */
     public static function newFromBadResponse($message, $badResponse)
     {
-        return new static($message . "; data payload is: " . json_encode($badResponse));
+        return new self($message . "; data payload is: " . json_encode($badResponse));
     }
 }

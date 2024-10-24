@@ -2,8 +2,8 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_NoFactoryForApiResponse;
-use DVSA\CPMS\Notifications\Exceptions\E4xx_UnsupportedApiResponse;
+use DVSA\CPMS\Notifications\Exceptions\E4xxNoFactoryForApiResponse;
+use DVSA\CPMS\Notifications\Exceptions\E4xxUnsupportedApiResponse;
 use DVSA\CPMS\Notifications\Messages\Values\MandateNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\PaymentNotificationV1;
 use PHPUnit\Framework\TestCase;
@@ -16,7 +16,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -24,7 +24,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // test the results
@@ -37,12 +37,12 @@ class BuildNotificationFromApiResponseTest extends TestCase
      * @covers ::from
      * @dataProvider provideExampleApiResponses
      */
-    public function testCanBuildEntity($apiResponse, $expectedResult)
+    public function testCanBuildEntity(array $apiResponse, MandateNotificationV1|PaymentNotificationV1 $expectedResult): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -59,18 +59,19 @@ class BuildNotificationFromApiResponseTest extends TestCase
      * @covers ::from
      * @dataProvider provideNonArray
      */
-    public function testThrowsExceptionWhenGivenNonArrayAsApiResponse($apiResponse)
+    public function testThrowsExceptionWhenGivenNonArrayAsApiResponse(mixed $apiResponse): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_UnsupportedApiResponse::class);
+        $this->expectException(E4xxUnsupportedApiResponse::class);
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
 
+        // @phpstan-ignore argument.type
         $unit($apiResponse);
 
         // ----------------------------------------------------------------
@@ -80,14 +81,14 @@ class BuildNotificationFromApiResponseTest extends TestCase
     /**
      * @covers ::from
      */
-    public function testThrowsExceptionWhenApiResponseHasNoNotificationTypeField()
+    public function testThrowsExceptionWhenApiResponseHasNoNotificationTypeField(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_UnsupportedApiResponse::class);
+        $this->expectException(E4xxUnsupportedApiResponse::class);
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -96,20 +97,19 @@ class BuildNotificationFromApiResponseTest extends TestCase
 
         // ----------------------------------------------------------------
         // test the results
-
     }
 
     /**
      * @covers ::from
      */
-    public function testThrowsExceptionWhenApiResponseHasUnsupportedNotificationTypeField()
+    public function testThrowsExceptionWhenApiResponseHasUnsupportedNotificationTypeField(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_NoFactoryForApiResponse::class);
+        $this->expectException(E4xxNoFactoryForApiResponse::class);
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -118,10 +118,9 @@ class BuildNotificationFromApiResponseTest extends TestCase
 
         // ----------------------------------------------------------------
         // test the results
-
     }
 
-    public function provideExampleApiResponses()
+    public function provideExampleApiResponses(): array
     {
         return [
             [
@@ -185,13 +184,15 @@ class BuildNotificationFromApiResponseTest extends TestCase
         ];
     }
 
-    public function provideNonArray()
+    public function provideNonArray(): array
     {
         return [
             [ null ],
             [ true ],
             [ false ],
-            [ function() { return []; } ],
+            [ function () {
+                return [];
+            } ],
             [ 0.0 ],
             [ 3.1415927 ],
             [ 0 ],
