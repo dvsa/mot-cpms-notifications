@@ -3,7 +3,7 @@
 namespace DVSA\CPMS\Notifications\Messages\Values;
 
 use DateTime;
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreatePaymentNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreatePaymentNotificationV1;
 
 class PaymentNotificationV1
 {
@@ -124,8 +124,7 @@ class PaymentNotificationV1
         $this->ensureDateTime($acknowledgeBy, 'acknowledgeBy');
         if ($acknowledgeBy instanceof DateTime) {
             $this->acknowledgeBy = clone $acknowledgeBy;
-        }
-        else {
+        } else {
             $this->acknowledgeBy = new DateTime($acknowledgeBy);
         }
 
@@ -137,8 +136,7 @@ class PaymentNotificationV1
         $this->ensureDateTime($eventDate, 'eventDate');
         if ($eventDate instanceof DateTime) {
             $this->eventDate = $eventDate;
-        }
-        else {
+        } else {
             $this->eventDate = new DateTime($eventDate);
         }
 
@@ -172,17 +170,16 @@ class PaymentNotificationV1
         // if it isn't a string, then we know we cannot use it as a DateTime
         if (!is_string($data)) {
             $msg = "illegal value for \${$paramName} parameter: " . var_export($data, true);
-            throw new E4xx_CannotCreatePaymentNotificationV1($msg);
+            throw new E4xxCannotCreatePaymentNotificationV1($msg);
         }
 
         // at this point, we have a string, but that does not mean it is a
         // valid DateTime value
         try {
             $temp = new DateTime($data);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $msg = "illegal value for \${$paramName} parameter: " . var_export($data, true);
-            throw E4xx_CannotCreatePaymentNotificationV1::newFromException($e, $msg);
+            throw E4xxCannotCreatePaymentNotificationV1::newFromException($e, $msg);
         }
     }
 

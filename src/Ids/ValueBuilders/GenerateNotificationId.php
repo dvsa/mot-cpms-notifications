@@ -2,7 +2,7 @@
 
 namespace DVSA\CPMS\Notifications\Ids\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E5xx_CannotGenerateNotificationId;
+use DVSA\CPMS\Notifications\Exceptions\E5xxCannotGenerateNotificationId;
 use Exception;
 use Ramsey\Uuid\Uuid;
 
@@ -33,9 +33,8 @@ class GenerateNotificationId
         try {
             $id = Uuid::uuid1();
             return $id->toString();
-        }
-        catch (Exception $e) {
-            throw new E5xx_CannotGenerateNotificationId($e->getMessage());
+        } catch (Exception $e) {
+            throw new E5xxCannotGenerateNotificationId($e->getMessage());
         }
     }
 }

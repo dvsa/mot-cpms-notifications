@@ -32,5 +32,4 @@ class MandateNotificationV1EventTypesTest extends TestCase
 
         $this->assertEquals($expectedResult, $actualResult);
     }
-
 }

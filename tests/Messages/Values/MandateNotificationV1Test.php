@@ -3,7 +3,7 @@
 namespace DVSA\CPMS\Notifications\Messages\Values;
 
 use DateTime;
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreateMandateNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
@@ -111,7 +111,7 @@ class MandateNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreateMandateNotificationV1::class);
+        $this->expectException(E4xxCannotCreateMandateNotificationV1::class);
 
         $payload = [
             'origin' => 'unit-tests',
@@ -214,7 +214,7 @@ class MandateNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreateMandateNotificationV1::class);
+        $this->expectException(E4xxCannotCreateMandateNotificationV1::class);
 
         $payload = [
             'origin' => 'unit-tests',
@@ -518,7 +518,8 @@ class MandateNotificationV1Test extends TestCase
             [ [] ],
             [ true ],
             [ false ],
-            [ function() {} ],
+            [ function () {
+            } ],
             [ 0.0 ],
             [ 3.1415927 ],
             [ 0 ],

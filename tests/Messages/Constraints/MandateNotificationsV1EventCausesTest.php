@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
  */
 class MandateNotificationsV1EventCausesTest extends TestCase
 {
-
     /**
      * @covers ::getAllEventCauses
      */

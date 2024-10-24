@@ -8,7 +8,6 @@ use DVSA\CPMS\Notifications\Messages\ValueBuilders\BuildMessageFromMandateNotifi
 use DVSA\CPMS\Notifications\Messages\ValueBuilders\BuildMessageFromPaymentNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\MandateNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\PaymentNotificationV1;
-
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -27,7 +26,7 @@ class MapNotificationTypesTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new MapNotificationTypes;
+        $obj = new MapNotificationTypes();
 
         // ----------------------------------------------------------------
         // test the results
@@ -43,8 +42,8 @@ class MapNotificationTypesTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $expectedResult = new BuildPaymentNotificationV1FromPayload;
-        $obj = new MapNotificationTypes;
+        $expectedResult = new BuildPaymentNotificationV1FromPayload();
+        $obj = new MapNotificationTypes();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -65,7 +64,7 @@ class MapNotificationTypesTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $obj = new MapNotificationTypes;
+        $obj = new MapNotificationTypes();
         $entity = new PaymentNotificationV1(
             "unit-tests",
             "12345-67890",
@@ -80,7 +79,7 @@ class MapNotificationTypesTest extends TestCase
             "PARENT-98765-4321",
             314
         );
-        $expectedResult = new BuildMessageFromPaymentNotificationV1;
+        $expectedResult = new BuildMessageFromPaymentNotificationV1();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -101,8 +100,8 @@ class MapNotificationTypesTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $expectedResult = new BuildMandateNotificationV1FromPayload;
-        $obj = new MapNotificationTypes;
+        $expectedResult = new BuildMandateNotificationV1FromPayload();
+        $obj = new MapNotificationTypes();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -123,7 +122,7 @@ class MapNotificationTypesTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $obj = new MapNotificationTypes;
+        $obj = new MapNotificationTypes();
         $entity = new MandateNotificationV1(
             'unit-tests',
             '12345-67890',
@@ -136,7 +135,7 @@ class MapNotificationTypesTest extends TestCase
             'TEST-12345-67890',
             314
         );
-        $expectedResult = new BuildMessageFromMandateNotificationV1;
+        $expectedResult = new BuildMessageFromMandateNotificationV1();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -148,5 +147,4 @@ class MapNotificationTypesTest extends TestCase
 
         $this->assertEquals($expectedResult, $actualResult);
     }
-
 }

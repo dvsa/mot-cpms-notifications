@@ -6,9 +6,9 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 /**
- * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xx_NoFactoryForApiResponse
+ * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E5xxCannotGenerateNotificationId
  */
-class E4xx_NoFactoryForApiResponseTest extends TestCase
+class E5xxCannotGenerateNotificationIdTest extends TestCase
 {
     /**
      * @covers ::__construct
@@ -23,12 +23,12 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_NoFactoryForApiResponse($message);
+        $obj = new E5xxCannotGenerateNotificationId($message);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_NoFactoryForApiResponse::class, $obj);
+        $this->assertInstanceOf(E5xxCannotGenerateNotificationId::class, $obj);
     }
 
     /**
@@ -44,7 +44,7 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_NoFactoryForApiResponse($message);
+        $obj = new E5xxCannotGenerateNotificationId($message);
 
         // ----------------------------------------------------------------
         // test the results
@@ -55,15 +55,15 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorCode400()
+    public function testHasErrorCode500()
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_NoFactoryForApiResponse($message);
+        $obj = new E5xxCannotGenerateNotificationId($message);
 
-        $expectedCode = 400;
+        $expectedCode = 500;
 
         // ----------------------------------------------------------------
         // perform the change
@@ -85,7 +85,7 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_NoFactoryForApiResponse($message);
+        $obj = new E5xxCannotGenerateNotificationId($message);
 
         $expectedMessage = $message;
 
@@ -108,18 +108,17 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $cause = new \Exception;
+        $cause = new \Exception();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_NoFactoryForApiResponse::newFromException($cause);
+        $obj = E5xxCannotGenerateNotificationId::newFromException($cause);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_NoFactoryForApiResponse::class, $obj);
+        $this->assertInstanceOf(E5xxCannotGenerateNotificationId::class, $obj);
         $this->assertSame($cause, $obj->getPrevious());
     }
-
 }

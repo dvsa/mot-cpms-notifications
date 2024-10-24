@@ -2,7 +2,7 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreateMandateNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\MandateNotificationV1;
 use PHPUnit\Framework\TestCase;
 
@@ -22,7 +22,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new BuildMandateNotificationV1FromApiResponse;
+        $obj = new BuildMandateNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // test the results
@@ -63,7 +63,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
             "TEST-12345-67890",
             314
         );
-        $obj = new BuildMandateNotificationV1FromApiResponse;
+        $obj = new BuildMandateNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -86,9 +86,9 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreateMandateNotificationV1::class);
+        $this->expectException(E4xxCannotCreateMandateNotificationV1::class);
 
-        $obj = new BuildMandateNotificationV1FromApiResponse;
+        $obj = new BuildMandateNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -109,9 +109,9 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreateMandateNotificationV1::class);
+        $this->expectException(E4xxCannotCreateMandateNotificationV1::class);
 
-        $obj = new BuildMandateNotificationV1FromApiResponse;
+        $obj = new BuildMandateNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -161,4 +161,5 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         }
 
         return $retval;
-    }}
+    }
+}

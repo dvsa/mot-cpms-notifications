@@ -6,9 +6,9 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 /**
- * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xx_UnsupportedApiResponse
+ * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreatePaymentNotificationV1
  */
-class E4xx_UnsupportedApiResponseTest extends TestCase
+class E4xxCannotCreatePaymentNotificationV1Test extends TestCase
 {
     /**
      * @covers ::__construct
@@ -23,12 +23,12 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_UnsupportedApiResponse($message);
+        $obj = new E4xxCannotCreatePaymentNotificationV1($message);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_UnsupportedApiResponse::class, $obj);
+        $this->assertInstanceOf(E4xxCannotCreatePaymentNotificationV1::class, $obj);
     }
 
     /**
@@ -44,7 +44,7 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_UnsupportedApiResponse($message);
+        $obj = new E4xxCannotCreatePaymentNotificationV1($message);
 
         // ----------------------------------------------------------------
         // test the results
@@ -61,7 +61,7 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_UnsupportedApiResponse($message);
+        $obj = new E4xxCannotCreatePaymentNotificationV1($message);
 
         $expectedCode = 400;
 
@@ -85,7 +85,7 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_UnsupportedApiResponse($message);
+        $obj = new E4xxCannotCreatePaymentNotificationV1($message);
 
         $expectedMessage = $message;
 
@@ -108,42 +108,41 @@ class E4xx_UnsupportedApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $cause = new \Exception;
+        $cause = new \Exception();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_UnsupportedApiResponse::newFromException($cause);
+        $obj = E4xxCannotCreatePaymentNotificationV1::newFromException($cause);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_UnsupportedApiResponse::class, $obj);
+        $this->assertInstanceOf(E4xxCannotCreatePaymentNotificationV1::class, $obj);
         $this->assertSame($cause, $obj->getPrevious());
     }
 
     /**
-     * @covers ::newFromBadResponse
+     * @covers ::newFromBadData
      */
-    public function testCanGenerateFromBadResponse()
+    public function testCanGenerateFromBadData()
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "bad response";
         $badData = [ 'hello, world' ];
-        $expectedMessage = "{$message}; data payload is: " . json_encode($badData);
+        $expectedMessage = "{$message}; data is: " . json_encode($badData);
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_UnsupportedApiResponse::newFromBadResponse($message, $badData);
+        $obj = E4xxCannotCreatePaymentNotificationV1::newFromBadData($message, $badData);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_UnsupportedApiResponse::class, $obj);
+        $this->assertInstanceOf(E4xxCannotCreatePaymentNotificationV1::class, $obj);
         $this->assertEquals($expectedMessage, $obj->getMessage());
     }
-
 }

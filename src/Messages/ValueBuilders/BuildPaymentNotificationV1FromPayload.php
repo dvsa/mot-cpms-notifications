@@ -2,7 +2,7 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreatePaymentNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreatePaymentNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\PaymentNotificationV1;
 use DVSA\CPMS\Queues\MultipartMessages\ValueBuilders\PayloadDecoderFactory;
 use stdClass;
@@ -48,12 +48,12 @@ class BuildPaymentNotificationV1FromPayload implements PayloadDecoderFactory
         ];
 
         if (!is_object($data)) {
-            throw E4xx_CannotCreatePaymentNotificationV1::newFromBadData("did not get PHP object to decode", $data);
+            throw E4xxCannotCreatePaymentNotificationV1::newFromBadData("did not get PHP object to decode", $data);
         }
 
         foreach ($expectedFields as $expectedField) {
             if (!property_exists($data, $expectedField)) {
-                throw E4xx_CannotCreatePaymentNotificationV1::newFromBadData("field '{$expectedField}' missing", $data);
+                throw E4xxCannotCreatePaymentNotificationV1::newFromBadData("field '{$expectedField}' missing", $data);
             }
         }
 

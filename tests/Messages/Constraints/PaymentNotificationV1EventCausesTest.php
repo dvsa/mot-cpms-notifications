@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
  */
 class PaymentNotificationV1EventCausesTest extends TestCase
 {
-
     /**
      * @covers ::getAllEventCauses
      */

@@ -2,7 +2,7 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreatePaymentNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreatePaymentNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\PaymentNotificationV1;
 use PHPUnit\Framework\TestCase;
 
@@ -22,7 +22,7 @@ class BuildPaymentNotificationV1FromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new BuildPaymentNotificationV1FromApiResponse;
+        $obj = new BuildPaymentNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // test the results
@@ -67,7 +67,7 @@ class BuildPaymentNotificationV1FromApiResponseTest extends TestCase
             "PARENT-98765-4321",
             314
         );
-        $obj = new BuildPaymentNotificationV1FromApiResponse;
+        $obj = new BuildPaymentNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -90,9 +90,9 @@ class BuildPaymentNotificationV1FromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreatePaymentNotificationV1::class);
+        $this->expectException(E4xxCannotCreatePaymentNotificationV1::class);
 
-        $obj = new BuildPaymentNotificationV1FromApiResponse;
+        $obj = new BuildPaymentNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -113,9 +113,9 @@ class BuildPaymentNotificationV1FromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreatePaymentNotificationV1::class);
+        $this->expectException(E4xxCannotCreatePaymentNotificationV1::class);
 
-        $obj = new BuildPaymentNotificationV1FromApiResponse;
+        $obj = new BuildPaymentNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change

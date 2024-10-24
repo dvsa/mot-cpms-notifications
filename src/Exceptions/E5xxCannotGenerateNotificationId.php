@@ -8,7 +8,7 @@ use RuntimeException;
 /**
  * exception thrown when we cannot generate a new notification ID
  */
-class E5xx_CannotGenerateNotificationId extends RuntimeException
+class E5xxCannotGenerateNotificationId extends RuntimeException
 {
     /**
      * constructor
@@ -28,7 +28,7 @@ class E5xx_CannotGenerateNotificationId extends RuntimeException
      *
      * @param  Exception $cause
      *         the exception that caused this error
-     * @return E5xx_CannotGenerateNotificationId
+     * @return E5xxCannotGenerateNotificationId
      */
     public static function newFromException(Exception $cause)
     {

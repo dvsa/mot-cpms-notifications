@@ -3,7 +3,7 @@
 namespace DVSA\CPMS\Notifications\Messages\Values;
 
 use DateTime;
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreateMandateNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1;
 
 class MandateNotificationV1
 {
@@ -145,7 +145,7 @@ class MandateNotificationV1
      *         the name of $data, to output in an exception message
      * @return void
      *
-     * @throws E4xx_CannotCreateMandateNotificationV1
+     * @throws E4xxCannotCreateMandateNotificationV1
      *         if $data cannot be used as a DateTime field
      */
     private function ensureDateTime($data, $paramName)
@@ -158,17 +158,16 @@ class MandateNotificationV1
         // if it isn't a string, then we know we cannot use it as a DateTime
         if (!is_string($data)) {
             $msg = "illegal value for \${$paramName} parameter: " . var_export($data, true);
-            throw new E4xx_CannotCreateMandateNotificationV1($msg);
+            throw new E4xxCannotCreateMandateNotificationV1($msg);
         }
 
         // at this point, we have a string, but that does not mean it is a
         // valid DateTime value
         try {
             $temp = new DateTime($data);
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $msg = "illegal value for \${$paramName} parameter: " . var_export($data, true);
-            throw E4xx_CannotCreateMandateNotificationV1::newFromException($e, $msg);
+            throw E4xxCannotCreateMandateNotificationV1::newFromException($e, $msg);
         }
     }
 

@@ -23,7 +23,7 @@ class GenerateNotificationIdTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new GenerateNotificationId;
+        $obj = new GenerateNotificationId();
 
         // ----------------------------------------------------------------
         // test the results
@@ -39,7 +39,7 @@ class GenerateNotificationIdTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $obj = new GenerateNotificationId;
+        $obj = new GenerateNotificationId();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -82,7 +82,7 @@ class GenerateNotificationIdTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $obj = new GenerateNotificationId;
+        $obj = new GenerateNotificationId();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -106,7 +106,7 @@ class GenerateNotificationIdTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $obj = new GenerateNotificationId;
+        $obj = new GenerateNotificationId();
 
         // ----------------------------------------------------------------
         // perform the change

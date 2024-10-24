@@ -2,7 +2,7 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreateMandateNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\MandateNotificationV1;
 use DVSA\CPMS\Queues\MultipartMessages\ValueBuilders\PayloadDecoderFactory;
 
@@ -45,12 +45,12 @@ class BuildMandateNotificationV1FromPayload implements PayloadDecoderFactory
         ];
 
         if (!is_object($data)) {
-            throw E4xx_CannotCreateMandateNotificationV1::newFromBadData("did not get PHP object to decode", $data);
+            throw E4xxCannotCreateMandateNotificationV1::newFromBadData("did not get PHP object to decode", $data);
         }
 
         foreach ($expectedFields as $expectedField) {
             if (!property_exists($data, $expectedField)) {
-                throw E4xx_CannotCreateMandateNotificationV1::newFromBadData("field '{$expectedField}' missing", $data);
+                throw E4xxCannotCreateMandateNotificationV1::newFromBadData("field '{$expectedField}' missing", $data);
             }
         }
 

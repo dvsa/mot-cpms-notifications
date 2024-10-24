@@ -2,8 +2,8 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_NoFactoryForApiResponse;
-use DVSA\CPMS\Notifications\Exceptions\E4xx_UnsupportedApiResponse;
+use DVSA\CPMS\Notifications\Exceptions\E4xxNoFactoryForApiResponse;
+use DVSA\CPMS\Notifications\Exceptions\E4xxUnsupportedApiResponse;
 use DVSA\CPMS\Notifications\Messages\Values\MandateNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\PaymentNotificationV1;
 use PHPUnit\Framework\TestCase;
@@ -24,7 +24,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // test the results
@@ -42,7 +42,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -64,9 +64,9 @@ class BuildNotificationFromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_UnsupportedApiResponse::class);
+        $this->expectException(E4xxUnsupportedApiResponse::class);
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -85,9 +85,9 @@ class BuildNotificationFromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_UnsupportedApiResponse::class);
+        $this->expectException(E4xxUnsupportedApiResponse::class);
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -96,7 +96,6 @@ class BuildNotificationFromApiResponseTest extends TestCase
 
         // ----------------------------------------------------------------
         // test the results
-
     }
 
     /**
@@ -107,9 +106,9 @@ class BuildNotificationFromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_NoFactoryForApiResponse::class);
+        $this->expectException(E4xxNoFactoryForApiResponse::class);
 
-        $unit = new BuildNotificationFromApiResponse;
+        $unit = new BuildNotificationFromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -118,7 +117,6 @@ class BuildNotificationFromApiResponseTest extends TestCase
 
         // ----------------------------------------------------------------
         // test the results
-
     }
 
     public function provideExampleApiResponses()
@@ -191,7 +189,9 @@ class BuildNotificationFromApiResponseTest extends TestCase
             [ null ],
             [ true ],
             [ false ],
-            [ function() { return []; } ],
+            [ function () {
+                return [];
+            } ],
             [ 0.0 ],
             [ 3.1415927 ],
             [ 0 ],

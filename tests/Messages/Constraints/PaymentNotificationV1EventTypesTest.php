@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
  */
 class PaymentNotificationV1EventTypesTest extends TestCase
 {
-
     /**
      * @covers ::getAllEventTypes
      */
@@ -33,5 +32,4 @@ class PaymentNotificationV1EventTypesTest extends TestCase
 
         $this->assertEquals($expectedResult, $actualResult);
     }
-
 }

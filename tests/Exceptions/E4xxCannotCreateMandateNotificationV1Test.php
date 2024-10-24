@@ -6,9 +6,9 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 /**
- * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreateMandateNotificationV1
+ * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1
  */
-class E4xx_CannotCreateMandateNotificationV1Test extends TestCase
+class E4xxCannotCreateMandateNotificationV1Test extends TestCase
 {
     /**
      * @covers ::__construct
@@ -23,12 +23,12 @@ class E4xx_CannotCreateMandateNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_CannotCreateMandateNotificationV1($message);
+        $obj = new E4xxCannotCreateMandateNotificationV1($message);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_CannotCreateMandateNotificationV1::class, $obj);
+        $this->assertInstanceOf(E4xxCannotCreateMandateNotificationV1::class, $obj);
     }
 
     /**
@@ -44,7 +44,7 @@ class E4xx_CannotCreateMandateNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_CannotCreateMandateNotificationV1($message);
+        $obj = new E4xxCannotCreateMandateNotificationV1($message);
 
         // ----------------------------------------------------------------
         // test the results
@@ -61,7 +61,7 @@ class E4xx_CannotCreateMandateNotificationV1Test extends TestCase
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_CannotCreateMandateNotificationV1($message);
+        $obj = new E4xxCannotCreateMandateNotificationV1($message);
 
         $expectedCode = 400;
 
@@ -85,7 +85,7 @@ class E4xx_CannotCreateMandateNotificationV1Test extends TestCase
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_CannotCreateMandateNotificationV1($message);
+        $obj = new E4xxCannotCreateMandateNotificationV1($message);
 
         $expectedMessage = $message;
 
@@ -108,17 +108,17 @@ class E4xx_CannotCreateMandateNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // setup your test
 
-        $cause = new \Exception;
+        $cause = new \Exception();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_CannotCreateMandateNotificationV1::newFromException($cause);
+        $obj = E4xxCannotCreateMandateNotificationV1::newFromException($cause);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_CannotCreateMandateNotificationV1::class, $obj);
+        $this->assertInstanceOf(E4xxCannotCreateMandateNotificationV1::class, $obj);
         $this->assertSame($cause, $obj->getPrevious());
     }
 
@@ -137,13 +137,12 @@ class E4xx_CannotCreateMandateNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_CannotCreateMandateNotificationV1::newFromBadData($message, $badData);
+        $obj = E4xxCannotCreateMandateNotificationV1::newFromBadData($message, $badData);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_CannotCreateMandateNotificationV1::class, $obj);
+        $this->assertInstanceOf(E4xxCannotCreateMandateNotificationV1::class, $obj);
         $this->assertEquals($expectedMessage, $obj->getMessage());
     }
-
 }
