@@ -5,6 +5,7 @@ namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreatePaymentNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\PaymentNotificationV1;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 /**
  * @coversDefaultClass DVSA\CPMS\Notifications\Messages\ValueBuilders\BuildPaymentNotificationV1FromPayload
@@ -14,7 +15,7 @@ class BuildPaymentNotificationV1FromPayloadTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -34,7 +35,7 @@ class BuildPaymentNotificationV1FromPayloadTest extends TestCase
      * @covers ::__invoke
      * @covers ::from
      */
-    public function testCanBuildEntity()
+    public function testCanBuildEntity(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -85,7 +86,7 @@ class BuildPaymentNotificationV1FromPayloadTest extends TestCase
      * @covers ::from
      * @dataProvider provideNonObjectPayloadsToTest
      */
-    public function testThrowsExceptionIfPayloadIsNotAnObject($payload)
+    public function testThrowsExceptionIfPayloadIsNotAnObject(mixed $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -97,7 +98,8 @@ class BuildPaymentNotificationV1FromPayloadTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = $obj($payload);
+        // @phpstan-ignore argument.type
+        $obj($payload);
 
         // ----------------------------------------------------------------
         // test the results
@@ -108,7 +110,7 @@ class BuildPaymentNotificationV1FromPayloadTest extends TestCase
      * @covers ::from
      * @dataProvider providePartialMandateDataToTest
      */
-    public function testThrowsExceptionIfRequiredFieldMissing($payload)
+    public function testThrowsExceptionIfRequiredFieldMissing(stdClass $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -120,13 +122,13 @@ class BuildPaymentNotificationV1FromPayloadTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = $obj($payload);
+        $obj($payload);
 
         // ----------------------------------------------------------------
         // test the results
     }
 
-    public function provideNonObjectPayloadsToTest()
+    public function provideNonObjectPayloadsToTest(): array
     {
         return [
             [ null ],
@@ -142,7 +144,7 @@ class BuildPaymentNotificationV1FromPayloadTest extends TestCase
         ];
     }
 
-    public function providePartialMandateDataToTest()
+    public function providePartialMandateDataToTest(): array
     {
         $complete_payload = (object)[
             'origin' => 'unit-tests',

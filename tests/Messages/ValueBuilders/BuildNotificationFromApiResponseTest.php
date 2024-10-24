@@ -16,7 +16,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -37,7 +37,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
      * @covers ::from
      * @dataProvider provideExampleApiResponses
      */
-    public function testCanBuildEntity($apiResponse, $expectedResult)
+    public function testCanBuildEntity(array $apiResponse, MandateNotificationV1|PaymentNotificationV1 $expectedResult): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -59,7 +59,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
      * @covers ::from
      * @dataProvider provideNonArray
      */
-    public function testThrowsExceptionWhenGivenNonArrayAsApiResponse($apiResponse)
+    public function testThrowsExceptionWhenGivenNonArrayAsApiResponse(mixed $apiResponse): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -71,6 +71,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
+        // @phpstan-ignore argument.type
         $unit($apiResponse);
 
         // ----------------------------------------------------------------
@@ -80,7 +81,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
     /**
      * @covers ::from
      */
-    public function testThrowsExceptionWhenApiResponseHasNoNotificationTypeField()
+    public function testThrowsExceptionWhenApiResponseHasNoNotificationTypeField(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -101,7 +102,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
     /**
      * @covers ::from
      */
-    public function testThrowsExceptionWhenApiResponseHasUnsupportedNotificationTypeField()
+    public function testThrowsExceptionWhenApiResponseHasUnsupportedNotificationTypeField(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -119,7 +120,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
         // test the results
     }
 
-    public function provideExampleApiResponses()
+    public function provideExampleApiResponses(): array
     {
         return [
             [
@@ -183,7 +184,7 @@ class BuildNotificationFromApiResponseTest extends TestCase
         ];
     }
 
-    public function provideNonArray()
+    public function provideNonArray(): array
     {
         return [
             [ null ],

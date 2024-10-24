@@ -5,6 +5,7 @@ namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\MandateNotificationV1;
 use DVSA\CPMS\Queues\MultipartMessages\ValueBuilders\PayloadDecoderFactory;
+use stdClass;
 
 class BuildMandateNotificationV1FromPayload implements PayloadDecoderFactory
 {

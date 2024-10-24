@@ -13,7 +13,7 @@ class E4xxNoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -34,7 +34,7 @@ class E4xxNoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testIsRuntimeException()
+    public function testIsRuntimeException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -55,7 +55,7 @@ class E4xxNoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorCode400()
+    public function testHasErrorCode400(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -79,7 +79,7 @@ class E4xxNoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorMessage()
+    public function testHasErrorMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -103,7 +103,7 @@ class E4xxNoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::newFromException
      */
-    public function testCanGenerateFromAnotherException()
+    public function testCanGenerateFromAnotherException(): void
     {
         // ----------------------------------------------------------------
         // setup your test

@@ -16,7 +16,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::__construct
      * @dataProvider provideExampleNotifications
      */
-    public function testCanInstantiate($payload, $expectedResult)
+    public function testCanInstantiate(array $payload, PaymentNotificationV1 $expectedResult): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -37,7 +37,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::__construct
      * @covers ::ensureDateTime
      */
-    public function testAcknowledgeByDateCanBeStringContainingValidDateTime()
+    public function testAcknowledgeByDateCanBeStringContainingValidDateTime(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -73,7 +73,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::__construct
      * @covers ::ensureDateTime
      */
-    public function testAcknowledgeByDateCanBeDateTime()
+    public function testAcknowledgeByDateCanBeDateTime(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -110,7 +110,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::ensureDateTime
      * @dataProvider provideNonDateTimes
      */
-    public function testAcknowledgeByDateCannotBeAnythingElse($nonDateTime)
+    public function testAcknowledgeByDateCannotBeAnythingElse(mixed $nonDateTime): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -146,7 +146,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::__construct
      * @covers ::ensureDateTime
      */
-    public function testEventDateCanBeStringContainingValidDateTime()
+    public function testEventDateCanBeStringContainingValidDateTime(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -182,7 +182,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::__construct
      * @covers ::ensureDateTime
      */
-    public function testEventDateCanBeDateTime()
+    public function testEventDateCanBeDateTime(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -219,7 +219,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::ensureDateTime
      * @dataProvider provideNonDateTimes
      */
-    public function testEventDateCannotBeAnythingElse($nonDateTime)
+    public function testEventDateCannotBeAnythingElse(mixed $nonDateTime): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -254,7 +254,7 @@ class PaymentNotificationV1Test extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testParentReferenceCanBeNull()
+    public function testParentReferenceCanBeNull(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -288,7 +288,7 @@ class PaymentNotificationV1Test extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testEntityVersionCanBeNull()
+    public function testEntityVersionCanBeNull(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -324,7 +324,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getOrigin
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetNotificationOrigin($payload)
+    public function testCanGetNotificationOrigin(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -348,7 +348,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getNotificationId
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetNotificationId($payload)
+    public function testCanGetNotificationId(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -372,7 +372,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getAcknowledgeBy
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetAcknowledgeByDate($payload)
+    public function testCanGetAcknowledgeByDate(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -396,7 +396,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getScheme
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetIntendedScheme($payload)
+    public function testCanGetIntendedScheme(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -420,7 +420,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getScope
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetPaymentScope($payload)
+    public function testCanGetPaymentScope(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -444,7 +444,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getEventType
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetEventType($payload)
+    public function testCanGetEventType(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -468,7 +468,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getEventCause
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetEventCause($payload)
+    public function testCanGetEventCause(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -492,7 +492,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getEventDate
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetEventDate($payload)
+    public function testCanGetEventDate(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -516,7 +516,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getReceiptReference
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetReceiptReference($payload)
+    public function testCanGetReceiptReference(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -540,7 +540,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getAmount
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetAmount($payload)
+    public function testCanGetAmount(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -564,7 +564,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getParentReference
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetParentReference($payload)
+    public function testCanGetParentReference(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -588,7 +588,7 @@ class PaymentNotificationV1Test extends TestCase
      * @covers ::getEntityVersion
      * @dataProvider provideExampleNotifications
      */
-    public function testCanGetEntityVersion($payload)
+    public function testCanGetEntityVersion(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -608,7 +608,7 @@ class PaymentNotificationV1Test extends TestCase
         $this->assertEquals($expectedResult, $actualResult);
     }
 
-    public function provideExampleNotifications()
+    public function provideExampleNotifications(): array
     {
         return [
             [
@@ -644,7 +644,7 @@ class PaymentNotificationV1Test extends TestCase
         ];
     }
 
-    public function provideNonDateTimes()
+    public function provideNonDateTimes(): array
     {
         return [
             [ null ],

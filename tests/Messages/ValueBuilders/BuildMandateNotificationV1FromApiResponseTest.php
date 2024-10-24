@@ -14,7 +14,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -34,7 +34,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
      * @covers ::__invoke
      * @covers ::from
      */
-    public function testCanBuildEntity()
+    public function testCanBuildEntity(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -81,7 +81,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
      * @covers ::from
      * @dataProvider provideNonArrayPayloadsToTest
      */
-    public function testThrowsExceptionIfPayloadIsNotAnArray($payload)
+    public function testThrowsExceptionIfPayloadIsNotAnArray(mixed $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -93,7 +93,8 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = $obj($payload);
+        // @phpstan-ignore argument.type
+        $obj($payload);
 
         // ----------------------------------------------------------------
         // test the results
@@ -104,7 +105,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
      * @covers ::from
      * @dataProvider providePartialMandateDataToTest
      */
-    public function testThrowsExceptionIfRequiredFieldMissing($payload)
+    public function testThrowsExceptionIfRequiredFieldMissing(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -122,7 +123,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         // test the results
     }
 
-    public function provideNonArrayPayloadsToTest()
+    public function provideNonArrayPayloadsToTest(): array
     {
         return [
             [ null ],
@@ -137,7 +138,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         ];
     }
 
-    public function providePartialMandateDataToTest()
+    public function providePartialMandateDataToTest(): array
     {
         $complete_payload = [
             'origin' => 'unit-tests',
@@ -156,7 +157,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
 
         foreach ($complete_payload as $field => $value) {
             $payload = $complete_payload;
-            unset($payload->{$field});
+            unset($payload[$field]);
             $retval[] = [ $payload ];
         }
 

@@ -10,7 +10,7 @@ use RuntimeException;
  *
  * this is normally caused by receiving bad data
  */
-class E4xxCannotCreatePaymentNotificationV1 extends RuntimeException
+final class E4xxCannotCreatePaymentNotificationV1 extends RuntimeException
 {
     /**
      * constructor
@@ -39,7 +39,7 @@ class E4xxCannotCreatePaymentNotificationV1 extends RuntimeException
         if (!empty($message)) {
             $message = (string)$message . ': ';
         }
-        return new static($message . $cause->getMessage(), $cause);
+        return new self($message . $cause->getMessage(), $cause);
     }
 
     /**
@@ -54,6 +54,6 @@ class E4xxCannotCreatePaymentNotificationV1 extends RuntimeException
      */
     public static function newFromBadData($message, $badData)
     {
-        return new static($message . "; data is: " . json_encode($badData));
+        return new self($message . "; data is: " . json_encode($badData));
     }
 }

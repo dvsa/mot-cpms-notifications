@@ -14,7 +14,7 @@ class BuildAcknowledgementDeadlineDateTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -34,7 +34,7 @@ class BuildAcknowledgementDeadlineDateTest extends TestCase
      * @covers ::__invoke
      * @dataProvider provideDeadlinesToTest
      */
-    public function testCanUseAsObject($timeout, $from, $expectedResult)
+    public function testCanUseAsObject(DateInterval $timeout, DateTime $from, DateTime $expectedResult): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -56,7 +56,7 @@ class BuildAcknowledgementDeadlineDateTest extends TestCase
      * @covers ::from
      * @dataProvider provideDeadlinesToTest
      */
-    public function testCanCallStatically($timeout, $from, $expectedResult)
+    public function testCanCallStatically(DateInterval $timeout, DateTime $from, DateTime $expectedResult): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -76,7 +76,7 @@ class BuildAcknowledgementDeadlineDateTest extends TestCase
      * @covers ::from
      * @covers ::__invoke
      */
-    public function testUsesCurrentDateTimeWhenNoStartDateProvided()
+    public function testUsesCurrentDateTimeWhenNoStartDateProvided(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -113,7 +113,7 @@ class BuildAcknowledgementDeadlineDateTest extends TestCase
      * @covers ::from
      * @covers ::__invoke
      */
-    public function testDoesNotModifyFromParameter()
+    public function testDoesNotModifyFromParameter(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -149,7 +149,7 @@ class BuildAcknowledgementDeadlineDateTest extends TestCase
     }
 
 
-    public function provideDeadlinesToTest()
+    public function provideDeadlinesToTest(): array
     {
         // the test dataset we will return
         $retval = [];

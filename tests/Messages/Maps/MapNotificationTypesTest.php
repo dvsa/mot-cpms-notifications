@@ -18,7 +18,7 @@ class MapNotificationTypesTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -37,7 +37,7 @@ class MapNotificationTypesTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanMapMessageToPaymentNotificationV1()
+    public function testCanMapMessageToPaymentNotificationV1(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -59,7 +59,7 @@ class MapNotificationTypesTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanMapPaymentNotificationV1ToMessage()
+    public function testCanMapPaymentNotificationV1ToMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -95,7 +95,7 @@ class MapNotificationTypesTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanMapMessageToMandateNotificationV1()
+    public function testCanMapMessageToMandateNotificationV1(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -117,7 +117,7 @@ class MapNotificationTypesTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanMapMandateNotificationV1ToMessage()
+    public function testCanMapMandateNotificationV1ToMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test

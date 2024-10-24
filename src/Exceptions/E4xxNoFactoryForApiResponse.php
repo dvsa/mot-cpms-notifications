@@ -11,7 +11,7 @@ use RuntimeException;
  *
  * this is normally caused by receiving bad data
  */
-class E4xxNoFactoryForApiResponse extends RuntimeException
+final class E4xxNoFactoryForApiResponse extends RuntimeException
 {
     /**
      * constructor
@@ -35,6 +35,6 @@ class E4xxNoFactoryForApiResponse extends RuntimeException
      */
     public static function newFromException(Exception $cause)
     {
-        return new static($cause->getMessage(), $cause);
+        return new self($cause->getMessage(), $cause);
     }
 }

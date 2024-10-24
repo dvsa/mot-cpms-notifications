@@ -48,6 +48,7 @@ class MandateNotificationV1
 
     /**
      * what event caused this notification
+     * @var string
      */
     private $eventCause;
 

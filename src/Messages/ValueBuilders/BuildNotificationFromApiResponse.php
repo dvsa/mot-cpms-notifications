@@ -54,6 +54,12 @@ class BuildNotificationFromApiResponse implements PayloadDecoderFactory
 
         // let's get this done
         $factory = new $factoryName();
-        return $factory($data);
+
+        if (is_callable($factory)) {
+            return $factory($data);
+        } else {
+            $msg = "Factory '{$factoryName}' is not callable";
+            throw new E4xxNoFactoryForApiResponse($msg);
+        }
     }
 }
