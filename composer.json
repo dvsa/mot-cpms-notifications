@@ -13,7 +13,6 @@
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "*",
         "phpstan/phpstan": "^1.12",
-        "vimeo/psalm": "^5.26",
         "dvsa/coding-standards": "^2.0"
     },
     "autoload": {
@@ -27,8 +26,7 @@
         "test": "vendor/bin/phpunit",
         "phpcs": "vendor/bin/phpcs",
         "phpcs:fix": "vendor/bin/phpcbf",
-        "phpstan": "vendor/bin/phpstan",
-        "psalm": "vendor/bin/psalm"
+        "phpstan": "vendor/bin/phpstan"
     },
     "config": {
         "allow-plugins": {
