@@ -15,7 +15,7 @@ class GenerateNotificationIdTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -23,7 +23,7 @@ class GenerateNotificationIdTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new GenerateNotificationId;
+        $obj = new GenerateNotificationId();
 
         // ----------------------------------------------------------------
         // test the results
@@ -34,12 +34,12 @@ class GenerateNotificationIdTest extends TestCase
     /**
      * @covers ::__invoke
      */
-    public function testCanUseAsObject()
+    public function testCanUseAsObject(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $obj = new GenerateNotificationId;
+        $obj = new GenerateNotificationId();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -56,7 +56,7 @@ class GenerateNotificationIdTest extends TestCase
     /**
      * @covers ::now
      */
-    public function testCanCallStatically()
+    public function testCanCallStatically(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -77,12 +77,12 @@ class GenerateNotificationIdTest extends TestCase
      * @covers ::now
      * @covers ::__invoke
      */
-    public function testGeneratesAString()
+    public function testGeneratesAString(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $obj = new GenerateNotificationId;
+        $obj = new GenerateNotificationId();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -101,12 +101,12 @@ class GenerateNotificationIdTest extends TestCase
      * @covers ::now
      * @covers ::__invoke
      */
-    public function testStringsArePureAscii()
+    public function testStringsArePureAscii(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $obj = new GenerateNotificationId;
+        $obj = new GenerateNotificationId();
 
         // ----------------------------------------------------------------
         // perform the change

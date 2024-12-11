@@ -6,14 +6,14 @@ use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 /**
- * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xx_NoFactoryForApiResponse
+ * @coversDefaultClass DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1
  */
-class E4xx_NoFactoryForApiResponseTest extends TestCase
+class E4xxCannotCreateMandateNotificationV1Test extends TestCase
 {
     /**
      * @covers ::__construct
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -23,18 +23,18 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_NoFactoryForApiResponse($message);
+        $obj = new E4xxCannotCreateMandateNotificationV1($message);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_NoFactoryForApiResponse::class, $obj);
+        $this->assertInstanceOf(E4xxCannotCreateMandateNotificationV1::class, $obj);
     }
 
     /**
      * @covers ::__construct
      */
-    public function testIsRuntimeException()
+    public function testIsRuntimeException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -44,7 +44,7 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new E4xx_NoFactoryForApiResponse($message);
+        $obj = new E4xxCannotCreateMandateNotificationV1($message);
 
         // ----------------------------------------------------------------
         // test the results
@@ -55,13 +55,13 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorCode400()
+    public function testHasErrorCode400(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_NoFactoryForApiResponse($message);
+        $obj = new E4xxCannotCreateMandateNotificationV1($message);
 
         $expectedCode = 400;
 
@@ -79,13 +79,13 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::__construct
      */
-    public function testHasErrorMessage()
+    public function testHasErrorMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
         $message = "unknown error";
-        $obj = new E4xx_NoFactoryForApiResponse($message);
+        $obj = new E4xxCannotCreateMandateNotificationV1($message);
 
         $expectedMessage = $message;
 
@@ -103,23 +103,46 @@ class E4xx_NoFactoryForApiResponseTest extends TestCase
     /**
      * @covers ::newFromException
      */
-    public function testCanGenerateFromAnotherException()
+    public function testCanGenerateFromAnotherException(): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $cause = new \Exception;
+        $cause = new \Exception();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = E4xx_NoFactoryForApiResponse::newFromException($cause);
+        $obj = E4xxCannotCreateMandateNotificationV1::newFromException($cause);
 
         // ----------------------------------------------------------------
         // test the results
 
-        $this->assertInstanceOf(E4xx_NoFactoryForApiResponse::class, $obj);
+        $this->assertInstanceOf(E4xxCannotCreateMandateNotificationV1::class, $obj);
         $this->assertSame($cause, $obj->getPrevious());
     }
 
+    /**
+     * @covers ::newFromBadData
+     */
+    public function testCanGenerateFromBadData(): void
+    {
+        // ----------------------------------------------------------------
+        // setup your test
+
+        $message = "bad response";
+        $badData = [ 'hello, world' ];
+        $expectedMessage = "{$message}; data is: " . json_encode($badData);
+
+        // ----------------------------------------------------------------
+        // perform the change
+
+        $obj = E4xxCannotCreateMandateNotificationV1::newFromBadData($message, $badData);
+
+        // ----------------------------------------------------------------
+        // test the results
+
+        $this->assertInstanceOf(E4xxCannotCreateMandateNotificationV1::class, $obj);
+        $this->assertEquals($expectedMessage, $obj->getMessage());
+    }
 }

@@ -13,7 +13,7 @@ class BuildMessageFromPaymentNotificationV1Test extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -21,7 +21,7 @@ class BuildMessageFromPaymentNotificationV1Test extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new BuildMessageFromPaymentNotificationV1;
+        $obj = new BuildMessageFromPaymentNotificationV1();
 
         // ----------------------------------------------------------------
         // test the results
@@ -33,7 +33,7 @@ class BuildMessageFromPaymentNotificationV1Test extends TestCase
      * @covers ::__invoke
      * @covers ::from
      */
-    public function testCanBuildMultipartMessage()
+    public function testCanBuildMultipartMessage(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -66,7 +66,7 @@ class BuildMessageFromPaymentNotificationV1Test extends TestCase
             'parent_reference' => "PARENT-98765-4321",
             'entity_version' => 314,
         ]);
-        $obj = new BuildMessageFromPaymentNotificationV1;
+        $obj = new BuildMessageFromPaymentNotificationV1();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -78,5 +78,4 @@ class BuildMessageFromPaymentNotificationV1Test extends TestCase
 
         $this->assertEquals($expectedResult, $actualResult);
     }
-
 }

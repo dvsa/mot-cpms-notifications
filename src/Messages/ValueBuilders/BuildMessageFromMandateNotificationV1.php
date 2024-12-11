@@ -8,7 +8,6 @@ use DVSA\CPMS\Queues\MultipartMessages\ValueBuilders\PayloadEncoderFactory;
 
 class BuildMessageFromMandateNotificationV1 implements PayloadEncoderFactory
 {
-
     /**
      * create a multipart message from MandateNotificationV1 entity
      *

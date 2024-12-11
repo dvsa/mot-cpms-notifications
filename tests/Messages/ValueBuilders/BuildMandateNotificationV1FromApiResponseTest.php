@@ -2,7 +2,7 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_CannotCreateMandateNotificationV1;
+use DVSA\CPMS\Notifications\Exceptions\E4xxCannotCreateMandateNotificationV1;
 use DVSA\CPMS\Notifications\Messages\Values\MandateNotificationV1;
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +14,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
     /**
      * @coversNothing
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -22,7 +22,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         // ----------------------------------------------------------------
         // perform the change
 
-        $obj = new BuildMandateNotificationV1FromApiResponse;
+        $obj = new BuildMandateNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // test the results
@@ -34,7 +34,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
      * @covers ::__invoke
      * @covers ::from
      */
-    public function testCanBuildEntity()
+    public function testCanBuildEntity(): void
     {
         // ----------------------------------------------------------------
         // setup your test
@@ -63,7 +63,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
             "TEST-12345-67890",
             314
         );
-        $obj = new BuildMandateNotificationV1FromApiResponse;
+        $obj = new BuildMandateNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -81,19 +81,20 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
      * @covers ::from
      * @dataProvider provideNonArrayPayloadsToTest
      */
-    public function testThrowsExceptionIfPayloadIsNotAnArray($payload)
+    public function testThrowsExceptionIfPayloadIsNotAnArray(mixed $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreateMandateNotificationV1::class);
+        $this->expectException(E4xxCannotCreateMandateNotificationV1::class);
 
-        $obj = new BuildMandateNotificationV1FromApiResponse;
+        $obj = new BuildMandateNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
 
-        $actualResult = $obj($payload);
+        // @phpstan-ignore argument.type
+        $obj($payload);
 
         // ----------------------------------------------------------------
         // test the results
@@ -104,14 +105,14 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
      * @covers ::from
      * @dataProvider providePartialMandateDataToTest
      */
-    public function testThrowsExceptionIfRequiredFieldMissing($payload)
+    public function testThrowsExceptionIfRequiredFieldMissing(array $payload): void
     {
         // ----------------------------------------------------------------
         // setup your test
 
-        $this->expectException(E4xx_CannotCreateMandateNotificationV1::class);
+        $this->expectException(E4xxCannotCreateMandateNotificationV1::class);
 
-        $obj = new BuildMandateNotificationV1FromApiResponse;
+        $obj = new BuildMandateNotificationV1FromApiResponse();
 
         // ----------------------------------------------------------------
         // perform the change
@@ -122,7 +123,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         // test the results
     }
 
-    public function provideNonArrayPayloadsToTest()
+    public function provideNonArrayPayloadsToTest(): array
     {
         return [
             [ null ],
@@ -137,7 +138,7 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
         ];
     }
 
-    public function providePartialMandateDataToTest()
+    public function providePartialMandateDataToTest(): array
     {
         $complete_payload = [
             'origin' => 'unit-tests',
@@ -156,9 +157,10 @@ class BuildMandateNotificationV1FromApiResponseTest extends TestCase
 
         foreach ($complete_payload as $field => $value) {
             $payload = $complete_payload;
-            unset($payload->{$field});
+            unset($payload[$field]);
             $retval[] = [ $payload ];
         }
 
         return $retval;
-    }}
+    }
+}

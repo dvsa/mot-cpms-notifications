@@ -2,8 +2,8 @@
 
 namespace DVSA\CPMS\Notifications\Messages\ValueBuilders;
 
-use DVSA\CPMS\Notifications\Exceptions\E4xx_NoFactoryForApiResponse;
-use DVSA\CPMS\Notifications\Exceptions\E4xx_UnsupportedApiResponse;
+use DVSA\CPMS\Notifications\Exceptions\E4xxNoFactoryForApiResponse;
+use DVSA\CPMS\Notifications\Exceptions\E4xxUnsupportedApiResponse;
 use DVSA\CPMS\Queues\MultipartMessages\ValueBuilders\PayloadDecoderFactory;
 
 class BuildNotificationFromApiResponse implements PayloadDecoderFactory
@@ -36,11 +36,11 @@ class BuildNotificationFromApiResponse implements PayloadDecoderFactory
         // make sure we have a notification_type
         if (!is_array($data)) {
             $msg = "bad API response; expected an array; received type '" . gettype($data) . "'";
-            throw E4xx_UnsupportedApiResponse::newFromBadResponse($msg, $data);
+            throw E4xxUnsupportedApiResponse::newFromBadResponse($msg, $data);
         }
         if (!isset($data['notification_type'])) {
             $msg = "bad API response; missing field 'notification_type'";
-            throw E4xx_UnsupportedApiResponse::newFromBadResponse($msg, $data);
+            throw E4xxUnsupportedApiResponse::newFromBadResponse($msg, $data);
         }
 
         // what type of notification are we building?
@@ -49,11 +49,17 @@ class BuildNotificationFromApiResponse implements PayloadDecoderFactory
         // does the factory exist?
         if (!class_exists($factoryName)) {
             $msg = "no factory '{$factoryName}' exists to process data of type '{$data['notification_type']}'";
-            throw new E4xx_NoFactoryForApiResponse($msg);
+            throw new E4xxNoFactoryForApiResponse($msg);
         }
 
         // let's get this done
-        $factory = new $factoryName;
-        return $factory($data);
+        $factory = new $factoryName();
+
+        if (is_callable($factory)) {
+            return $factory($data);
+        } else {
+            $msg = "Factory '{$factoryName}' is not callable";
+            throw new E4xxNoFactoryForApiResponse($msg);
+        }
     }
 }
