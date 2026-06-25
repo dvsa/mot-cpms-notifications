@@ -4,7 +4,7 @@
     "license": "proprietary",
     "require": {
         "php": "^8.2",
-        "dvsa/mot-cpms-queues": "^3.0.0",
+        "dvsa/mot-cpms-queues": "^3.0.1",
         "ramsey/uuid": "^4.2.1"
     },
     "require-dev": {
