@@ -5,7 +5,7 @@
     "require": {
         "php": "^8.2",
         "ramsey/uuid": "^4.2.1",
-        "dvsa/mot-cpms-queues": "^3.0"
+        "dvsa/mot-cpms-queues": "^3.0.2"
     },
     "require-dev": {
         "captainhook/captainhook": "^5.16",
