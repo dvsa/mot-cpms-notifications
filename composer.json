@@ -4,8 +4,8 @@
     "license": "proprietary",
     "require": {
         "php": "^8.2",
-        "dvsa/mot-cpms-queues": "^3.0.1",
-        "ramsey/uuid": "^4.2.1"
+        "ramsey/uuid": "^4.2.1",
+        "dvsa/mot-cpms-queues": "^3.0"
     },
     "require-dev": {
         "captainhook/captainhook": "^5.16",
